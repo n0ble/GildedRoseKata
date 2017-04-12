@@ -46,7 +46,7 @@ namespace GildedRose.Console
         {
             foreach (var curr in Items)
             {
-                curr.ItemProcessor.UpdateQuality(curr.Item);
+                curr.ItemProcessor.UpdateSellInAndQuality(curr.Item);
             }
         }
 

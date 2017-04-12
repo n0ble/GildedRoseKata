@@ -2,6 +2,6 @@
 {
     public interface IItemProcessor
     {
-        void UpdateQuality(Item item);
+        void UpdateSellInAndQuality(Item item);
     }
 }

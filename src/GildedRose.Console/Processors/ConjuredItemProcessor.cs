@@ -1,8 +1,8 @@
 ﻿namespace GildedRose.Console.Processors
 {
-    public class ConjuredItemProcessor : BaseItemProcessor
+    public class ConjuredItemProcessor : IItemProcessor
     {
-        public override void UpdateQuality(Item item)
+        public void UpdateSellInAndQuality(Item item)
         {
             var decrement = item.SellIn > 0
                 ? RegularItemProcessor.DegradationNormalSpeed*2
@@ -10,7 +10,7 @@
 
             item.Quality -= decrement;
 
-            base.UpdateQuality(item);
+            ItemProcessorHelper.UpdateSellInAndQuality(item);
         }
     }
 }

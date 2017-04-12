@@ -1,8 +1,8 @@
 ﻿namespace GildedRose.Console.Processors
 {
-    public class GrowingToTheLimitQualityItemProcessor : BaseItemProcessor
+    public class GrowingToTheLimitQualityItemProcessor : IItemProcessor
     {
-        public override void UpdateQuality(Item item)
+        public void UpdateSellInAndQuality(Item item)
         {
 
             var increment = item.SellIn > 10
@@ -17,7 +17,7 @@
                 ? item.Quality + increment
                 : 0;
 
-            base.UpdateQuality(item);
+            ItemProcessorHelper.UpdateSellInAndQuality(item);
         }
     }
 }

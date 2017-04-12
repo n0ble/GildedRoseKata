@@ -45,7 +45,7 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemContainer.cs" />
-    <Compile Include="Processors\BaseItemProcessor.cs" />
+    <Compile Include="ItemProcessorHelper.cs" />
     <Compile Include="Processors\ConjuredItemProcessor.cs" />
     <Compile Include="Processors\GrowingQualityItemProcessor.cs" />
     <Compile Include="Processors\GrowingToTheLimitQualityItemProcessor.cs" />

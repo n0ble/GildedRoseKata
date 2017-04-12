@@ -1,11 +1,11 @@
 ﻿namespace GildedRose.Console.Processors
 {
-    public class RegularItemProcessor : BaseItemProcessor
+    public class RegularItemProcessor : IItemProcessor
     {
         public static int DegradationNormalSpeed = 1;
         public static int DegradationDoubleSpeed = 2;
 
-        public override void UpdateQuality(Item item)
+        public void UpdateSellInAndQuality(Item item)
         {
             var decrement = item.SellIn > 0 
                 ? DegradationNormalSpeed 
@@ -13,7 +13,7 @@
 
             item.Quality -= decrement;
 
-            base.UpdateQuality(item);
+            ItemProcessorHelper.UpdateSellInAndQuality(item);
         }
     }
 }
