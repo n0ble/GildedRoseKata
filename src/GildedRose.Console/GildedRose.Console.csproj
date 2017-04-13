@@ -41,11 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IItemProcessor.cs" />
+    <Compile Include="Contract\IItemChangable.cs" />
+    <Compile Include="Contract\IQualityToBoundariesAligner.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="Contract\ISellInDecrementor.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemContainer.cs" />
-    <Compile Include="ItemProcessorHelper.cs" />
     <Compile Include="Processors\ConjuredItemProcessor.cs" />
     <Compile Include="Processors\GrowingQualityItemProcessor.cs" />
     <Compile Include="Processors\GrowingToTheLimitQualityItemProcessor.cs" />
@@ -53,6 +54,8 @@
     <Compile Include="Processors\RegularItemProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualityToBoundariesAligner.cs" />
+    <Compile Include="SellInDecrementor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

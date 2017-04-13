@@ -1,16 +1,30 @@
-﻿namespace GildedRose.Console.Processors
+﻿using GildedRose.Console.Contract;
+
+namespace GildedRose.Console.Processors
 {
-    public class ConjuredItemProcessor : IItemProcessor
-    {
-        public void UpdateSellInAndQuality(Item item)
-        {
-            var decrement = item.SellIn > 0
-                ? RegularItemProcessor.DegradationNormalSpeed*2
-                : RegularItemProcessor.DegradationDoubleSpeed*2;
+	public class ConjuredItemProcessor : IItemChangable
+	{
+		private readonly ISellInDecrementor _sellInDecrementor;
+		private readonly IQualityToBoundariesAligner _qualityToBoundariesAligner;
 
-            item.Quality -= decrement;
+		public ConjuredItemProcessor(ISellInDecrementor sellInDecrementor,
+			IQualityToBoundariesAligner qualityToBoundariesAligner)
+		{
+			_sellInDecrementor = sellInDecrementor;
+			_qualityToBoundariesAligner = qualityToBoundariesAligner;
+		}
 
-            ItemProcessorHelper.UpdateSellInAndQuality(item);
-        }
-    }
+		public void UpdateSellInAndQuality(Item item)
+		{
+			var decrement = item.SellIn > 0
+				? RegularItemProcessor.DegradationNormalSpeed * 2
+				: RegularItemProcessor.DegradationDoubleSpeed * 2;
+
+			item.Quality -= decrement;
+
+			_qualityToBoundariesAligner.AlignQualityToBoundaries(item);
+			_sellInDecrementor.DecrementSellIn(item);
+
+		}
+	}
 }

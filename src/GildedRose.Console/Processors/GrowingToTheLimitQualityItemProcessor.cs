@@ -1,23 +1,35 @@
-﻿namespace GildedRose.Console.Processors
+﻿using GildedRose.Console.Contract;
+
+namespace GildedRose.Console.Processors
 {
-    public class GrowingToTheLimitQualityItemProcessor : IItemProcessor
-    {
-        public void UpdateSellInAndQuality(Item item)
-        {
+	public class GrowingToTheLimitQualityItemProcessor : IItemChangable
+	{
+		private readonly ISellInDecrementor _sellInDecrementor;
+		private readonly IQualityToBoundariesAligner _qualityToBoundariesAligner;
 
-            var increment = item.SellIn > 10
-                ? 1
-                : item.SellIn > 5
-                    ? 2
-                    : item.SellIn > 0
-                        ? 3
-                        : 0;
+		public GrowingToTheLimitQualityItemProcessor(ISellInDecrementor sellInDecrementor,
+			IQualityToBoundariesAligner qualityToBoundariesAligner)
+		{
+			_sellInDecrementor = sellInDecrementor;
+			_qualityToBoundariesAligner = qualityToBoundariesAligner;
+		}
 
-            item.Quality = increment != 0
-                ? item.Quality + increment
-                : 0;
+		public void UpdateSellInAndQuality(Item item)
+		{
+			var increment = item.SellIn > 10
+				? 1
+				: item.SellIn > 5
+					? 2
+					: item.SellIn > 0
+						? 3
+						: 0;
 
-            ItemProcessorHelper.UpdateSellInAndQuality(item);
-        }
-    }
+			item.Quality = increment != 0
+				? item.Quality + increment
+				: 0;
+
+			_qualityToBoundariesAligner.AlignQualityToBoundaries(item);
+			_sellInDecrementor.DecrementSellIn(item);
+		}
+	}
 }
