@@ -1,0 +1,8 @@
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\bin\Debug\GildedRose.exe.config
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\bin\Debug\GildedRose.XML
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\bin\Debug\GildedRose.exe
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\bin\Debug\GildedRose.pdb
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\bin\Debug\FSharp.Core.dll
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\bin\Debug\FSharp.Core.xml
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\obj\Debug\GildedRose.exe
+D:\Self Education\Projects\MyProjects\GildedRoseKata\fsharp\GildedRose\obj\Debug\GildedRose.pdb
